@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" output="test-bin" path="junit"/>
-	<classpathentry kind="src" output="bin" path="main"/>
-<<<<<<< HEAD
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CS320_Jetty"/>
-=======
->>>>>>> refs/remotes/origin/master
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
+	<classpathentry kind="src" path="junit"/>
+	<classpathentry kind="src" path="main"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CS320_Derby"/>
-=======
-	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Derby"/>
-=======
->>>>>>> refs/remotes/cwolf11/master
-	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Jetty"/>
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/master
-=======
-	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Derby"/>
->>>>>>> refs/remotes/cwolf11/master
-	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CS320_Jetty"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
