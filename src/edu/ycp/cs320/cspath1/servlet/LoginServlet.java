@@ -1,6 +1,4 @@
-
 package edu.ycp.cs320.cspath1.servlet;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
