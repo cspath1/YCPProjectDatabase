@@ -88,22 +88,7 @@ public class AccountCreationModel {
 		this.emailValidator = emailValidator;
 	}
 	
-	//the following string functions need to be tested
-	public String getName() {
-		return name;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public String getContactNum() {
-		return contactNum;
-	}
-	public String getAddress() {
-		return address;
-	}
+	
 	
 	//this will change soon...ignore for now
 	public Boolean allFieldsMet(){
@@ -129,6 +114,46 @@ public class AccountCreationModel {
 			}
 			else { return false; }
 		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getContactNum() {
+		return contactNum;
+	}
+
+	public void setContactNum(String contactNum) {
+		this.contactNum = contactNum;
 	}
 	
 	

@@ -7,7 +7,7 @@
 	<title>User Search</title>
 	<link rel="stylesheet" href="Search.css">
 	<meta name="viewport" content="width = device-width initial-scale=1">
-	</head>
+</head>
 
 	<body>
 		<div id="header">

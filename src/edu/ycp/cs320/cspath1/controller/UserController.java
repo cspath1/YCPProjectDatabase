@@ -27,14 +27,15 @@ public class UserController {
 		this.user = user;
 	}
 	
-	public boolean login(String username, String password) throws IOException, SQLException {
-		user = db.findUserByUsernameAndPassword(username, password);
-		if (user.getUsername() == username && user.getPassword() == password) {
-			return true;
+	public User login() throws IOException, SQLException {
+		user = db.findUserByUsernameAndPassword(model.getUsername(), model.getPassword());
+		if (user.getUsername().equals(model.getUsername()) && user.getPassword().equals(model.getPassword())) {
+			return user;
 		}
 		else {
-			return false;
+			return null;
 		}
+		
 	}
 	
 	public void logout() {
@@ -47,7 +48,7 @@ public class UserController {
 		//
 	}
 	//should be good just need to implement
-	public User createAcct() throws IOException, SQLException {
+	public int createAcct() throws IOException, SQLException {
 		emailValidator = new EmailValidator();
 		User user = new Student();
 		boolean check = emailValidator.validate(model.getEmail());
@@ -55,11 +56,11 @@ public class UserController {
 			Integer user_id = db.insertUser(model.getUsername(), model.getPassword(), model.getEmail(), model.getUsertype(), model.getFirstName(),
 					model.getLastName(), model.getMajortype(), model.getClasstype(), model.getName(), model.getAddress(), model.getContactNum());
 			user = db.findUserByUserID(user_id);
-			return user;
+			return user.getUserID();
 		}
 		else {
 			System.out.println("That username is already in use.");
-			return null;
+			return -1;
 		}
 	}
 		

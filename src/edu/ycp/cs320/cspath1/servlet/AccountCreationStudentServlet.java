@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.ycp.cs320.cspath1.controller.UserController;
 import edu.ycp.cs320.cspath1.enums.ClassType;
 import edu.ycp.cs320.cspath1.enums.MajorType;
 import edu.ycp.cs320.cspath1.enums.UserType;
+import edu.ycp.cs320.cspath1.model.AccountCreationModel;
 import edu.ycp.cs320.cspath1.persist.DatabaseProvider;
 import edu.ycp.cs320.cspath1.persist.IDatabase;
 import edu.ycp.cs320.cspath1.persist.YCPDatabase;
@@ -30,6 +32,8 @@ private IDatabase db;
 			throws ServletException, IOException {
 		DatabaseProvider.setInstance(new YCPDatabase());
 		db = DatabaseProvider.getInstance();	
+		AccountCreationModel model = new AccountCreationModel();
+		UserController controller = new UserController();
 		String errorMessage = null;
 		
 		String email = req.getParameter("email");
@@ -46,6 +50,19 @@ private IDatabase db;
 		String address = null;
 		int user_id = 0;
 
+		model.setEmail(email);
+		model.setUsername(username);
+		model.setPassword(password1);
+		model.setMajortype(majortype);
+		model.setAddress(address);
+		model.setName(name);
+		model.setContactNum(number);
+		model.setClasstype(classtype);
+		model.setFirstName(firstname);
+		model.setLastName(lastname);
+		model.setUsertype(UserType.STUDENT);
+		controller.setModel(model);
+		
 			
 		if (username == null || password == null || password1 == null || email == null || majortype == null || classtype == null || firstname == null || lastname == null) {
 
@@ -54,9 +71,9 @@ private IDatabase db;
 			errorMessage = "Passwords do not match";
 		} else {
 			try {
-				user_id = db.insertUser(username, password, email, UserType.STUDENT, firstname, lastname, majortype, classtype, name, address, number);
-
+				user_id = controller.createAcct();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -74,16 +74,9 @@ input[type=text], input[type=password] {
 	box-sizing: border-box;
 	border: 2px solid black;
 }
-<<<<<<< HEAD
-
-#newLogin {
-	margin: 10px;
-=======
 #newLogin{
 	padding: 4px;
 	margin-left: 35px;
-	
->>>>>>> refs/remotes/cwolf11/master
 }
 
 label>a {

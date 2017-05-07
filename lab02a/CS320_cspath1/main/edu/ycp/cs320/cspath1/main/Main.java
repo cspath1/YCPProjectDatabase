@@ -1,4 +1,4 @@
-package edu.ycp.cs320.cspath1.main;
+package CS320_cspath1.main.edu.ycp.cs320.cspath1.main;
 
 import java.util.Scanner;
 

@@ -50,7 +50,7 @@ public class SearchProjects {
 	}
 	public ArrayList<Project> getProjectsByTitle(String title) throws IOException, SQLException{
 		//List<User> userList = db.findAllUsers();
-		ArrayList<Project> projects = null;
+		ArrayList<Project> projects = new ArrayList<Project>();
 		projects.add(db.findProjectByTitle(title));
 		if (projects.isEmpty()) {
 			System.out.println("No Users found in library");
@@ -62,7 +62,7 @@ public class SearchProjects {
 	}
 	public ArrayList<Project> getProjectsByDescription(String description) throws IOException, SQLException{
 		//List<User> userList = db.findAllUsers();
-		ArrayList<Project> projects = null;
+		ArrayList<Project> projects = new ArrayList<Project>();
 		projects.add(db.findProjectByDescription(description));
 		if (projects.isEmpty()) {
 			System.out.println("No Users found in library");

@@ -1,38 +1,13 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-<<<<<<< HEAD
-Fri Apr 21 13:20:10 EDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-9187-3aa2-000005f507d0 
-on database directory C:\Users\spath\workspace\project_database.db with class loader sun.misc.Launcher$AppClassLoader@30f39991 
-Loaded from file:/C:/Users/spath/Downloads/CS320_Library_Example_2017/CS320_Derby/lib/derby.jar
-=======
-Wed Apr 26 22:14:31 EDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-ad30-3d3f-00000be19940 
+Sat May 06 21:29:16 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-e086-685a-00000cc67940 
 on database directory C:\Users\Cody Spath\workspace\project_database.db with class loader sun.misc.Launcher$AppClassLoader@4e0e2f2a 
 Loaded from file:/C:/Users/Cody%20Spath/Downloads/CS320_Library_Example_2017/CS320_Derby/lib/derby.jar
->>>>>>> refs/remotes/origin/master
-=======
-Sun Apr 30 00:49:00 EDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-bd30-be9a-000003920a30 
-on database directory C:\Users\radio shack\workspace\project_database.db with class loader sun.misc.Launcher$AppClassLoader@c387f44 
-Loaded from file:/C:/Users/radio%20shack/workspace/CS320_Derby/lib/derby.jar
->>>>>>> refs/remotes/cwolf11/master
 java.vendor=Oracle Corporation
-<<<<<<< HEAD
-<<<<<<< HEAD
-java.runtime.version=1.8.0_121-b13
-user.dir=C:\Users\spath\git\YCPProjectDatabase
-=======
 java.runtime.version=1.8.0_60-b27
 user.dir=C:\Users\Cody Spath\git\YCPProjectDatabase
->>>>>>> refs/remotes/origin/master
 os.name=Windows 10
-=======
-java.runtime.version=1.8.0_51-b16
-user.dir=C:\Users\radio shack\git\YCPProjectDatabase
-os.name=Windows 7
->>>>>>> refs/remotes/cwolf11/master
 os.arch=amd64
-os.version=6.1
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

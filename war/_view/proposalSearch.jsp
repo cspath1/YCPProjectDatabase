@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <html>
-<header>
+<head>
 	<title>Proposed Project Search</title>
 	<link rel="stylesheet" href="Search.css">
 	<meta name="viewport" content="width = device-width initial-scale=1">
@@ -23,7 +23,7 @@
 	<form action="${pageContext.servletContext.contextPath}/proposalSearch" method="post">
 	<h1 style = "text-align: center">Proposed Project Search</h1>
 		<label><a>Select a field to search by:</a></label><br>
-		<select name="attribue">
+		<select name="attribute">
 				<option value="title"selected>Title</option>
 				<option value="description">Description</option>
 				<option value="start">Start Date</option>
@@ -36,9 +36,17 @@
 				<option value="cost">Cost</option>
 				
 		<input type="text" name="keyword"><br><br>
+		
+		</select>
+		<table>
+			 <c:forEach items="${projects}" var="project">
+				<tr class = "projectRow">
+					<td class = "Title">${project.title}</td>
+				</tr>
+			</c:forEach>
+		</table>
 			
 		<input type="Submit" name="submit" value="Search" class = "button button5">
-		</select><br><br>
 		</form>
 		</div>
 	</body>

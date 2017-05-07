@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs320.cspath1.persist.DatabaseProvider;
 import edu.ycp.cs320.cspath1.persist.YCPDatabase;
+import edu.ycp.cs320.cspath1.controller.UserController;
 import edu.ycp.cs320.cspath1.enums.UserType;
+import edu.ycp.cs320.cspath1.model.AccountCreationModel;
 import edu.ycp.cs320.cspath1.persist.IDatabase;
 import edu.ycp.cs320.cspath1.user.User;
 
@@ -30,20 +32,28 @@ private IDatabase db;
 			throws ServletException, IOException {
 		DatabaseProvider.setInstance(new YCPDatabase());
 		db = DatabaseProvider.getInstance();	
+		AccountCreationModel model = new AccountCreationModel();
+		UserController controller = new UserController();
 		String errorMessage = null;
 		String username;
 		String password;
 		boolean validLogin = false;
 		User user = null;
+		
+		
 
 		username = req.getParameter("username");
 		password = req.getParameter("password");
+		
+		model.setUsername(username);
+		model.setPassword(password);
+		controller.setModel(model);
 			
 		if (username == null || password == null || username.equals("") || password.equals("")) {
 			errorMessage = "Please specify username and password";
 		} else {
 			try {
-				user = db.findUserByUsernameAndPassword(username, password);
+				user = controller.login();
 				System.out.println(user.getUsername() + ", " + user.getPassword());
 				System.out.println(username + ", " + password);
 				

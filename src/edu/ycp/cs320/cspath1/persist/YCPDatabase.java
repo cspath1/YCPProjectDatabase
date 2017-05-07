@@ -91,19 +91,7 @@ public class YCPDatabase implements IDatabase {
 
 	private Connection connect() throws SQLException {
 
-<<<<<<< HEAD
-		Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/spath/workspace/project_database.db;create=true");
-
-
-		
-		// Set autocommit to false to allow multiple the execution of
-		// multiple queries/statements as part of the same transaction.
-		conn.setAutoCommit(true);
-		
-		return conn;
-=======
-	Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/radio shack/workspace/project_database.db;create=true");
-
+	Connection conn = DriverManager.getConnection("jdbc:derby:C:/Users/Cody Spath/workspace/project_database.db;create=true");
 
 	
 	// Set autocommit to false to allow multiple the execution of
@@ -111,85 +99,10 @@ public class YCPDatabase implements IDatabase {
 	conn.setAutoCommit(true);
 	
 	return conn;
->>>>>>> refs/remotes/cwolf11/master
 	}
 	
 	//Methods to return enums from strings
 	private static MajorType getMajorTypeFromParameter(String s){
-<<<<<<< HEAD
-		MajorType majortype = null;
-		if (s == null || s.equals("")){
-			return null;
-		}
-		else if (s.contains("ME")){
-			majortype = MajorType.ME;
-		}
-		else if (s.contains("CE")){
-			majortype = MajorType.CE;
-		}
-		else if(s.contains("CS")){
-			majortype = MajorType.CS;
-		}
-		else if(s.contains("EE")){
-			majortype = MajorType.EE;
-		}
-		else if (s.contains("UN")) {
-			majortype = MajorType.UN;
-		}
-		else if (s.contains("CIV")){
-			majortype = MajorType.CIV;
-		}
-		System.out.println(majortype.toString());
-		return majortype;
-	}
-	
-	private static ArrayList<MajorType> getMajorListFromParameters(String s) {
-		ArrayList<MajorType> majors = new ArrayList<MajorType>();
-		if (s == null || s.equals("")){
-			return null;
-		}
-		if(s.contains("CE")){
-			majors.add(MajorType.CE);
-		}
-		if(s.contains("CS")){
-			majors.add(MajorType.CS);
-		}
-		if(s.contains("EE")){
-			majors.add(MajorType.EE);
-			
-		}
-		if(s.contains("ME")) {
-			majors.add(MajorType.ME);
-		}
-		if (s.contains("UN")) {
-			majors.add(MajorType.UN);
-		}
-		if (s.contains("CIV")){
-			majors.add(MajorType.CIV);
-		}
-		return majors;
-	}
-	
-	private static ArrayList<ClassType> getClassListFromParameter(String s){
-		ArrayList<ClassType> classes = new ArrayList<ClassType>();
-		if (s == null || s.equals("")){
-			return null;
-		}
-		if (s.contains("FRESHMAN")){
-			classes.add(ClassType.FRESHMAN);
-		}
-		if (s.contains("SOPHOMORE")){
-			classes.add(ClassType.SOPHOMORE);
-		}
-		if (s.contains("JUNIOR")){
-			classes.add(ClassType.JUNIOR);
-		}
-		if (s.contains("SENIOR")){
-			classes.add(ClassType.SENIOR);
-			
-		}
-		return classes;
-=======
 	MajorType majortype = null;
 	if (s == null || s.equals("")){
 	return null;
@@ -262,7 +175,6 @@ public class YCPDatabase implements IDatabase {
 	
 	}
 	return classes;
->>>>>>> refs/remotes/cwolf11/master
 	}
 	
 	private static ClassType getClassTypeFromParameter(String s){
@@ -448,19 +360,11 @@ public class YCPDatabase implements IDatabase {
 			solicitation.setStart(project.getStart());
 			solicitation.setDuration(project.getDuration());
 			solicitation.setProjectType(project.getProjectType());
-<<<<<<< HEAD
-			solicitation.setSolicitationType(getSolicitationTypeFromParameter(resultSet.getString(11)));
-			solicitation.setMajors(getMajorListFromString(resultSet.getString(12)));
-			solicitation.setClasses(getClassListFromString(resultSet.getString(13)));
-			solicitation.setNumStudents(resultSet.getInt(14));
-			solicitation.setCost(resultSet.getInt(15));
-=======
 			solicitation.setSolicitationType(getSolicitationTypeFromParameter(resultSet.getString(13)));
 			solicitation.setMajors(getMajorListFromString(resultSet.getString(14)));
 			solicitation.setClasses(getClassListFromString(resultSet.getString(15)));
 			solicitation.setNumStudents(resultSet.getInt(16));
 			solicitation.setCost(resultSet.getInt(17));
->>>>>>> refs/remotes/cwolf11/master
 
 			return solicitation;
 	}
@@ -977,6 +881,7 @@ public class YCPDatabase implements IDatabase {
 		stmt2.setString(5, firstname);
 		stmt2.setString(6, lastname);
 		stmt2.setString(7, major.toString());
+		stmt2.setString(8, null);
 		stmt2.setString(9, null);
 		stmt2.setString(10, null);
 		stmt2.setString(11, null);
@@ -1057,8 +962,6 @@ public class YCPDatabase implements IDatabase {
 	loadUser(user, resultSet1);
 	users.add(user);
 	}
-<<<<<<< HEAD
-=======
 	//SHOULDN'T HAPPEN
 	if (users.size() == 0){
 	System.out.println("Ya done goofed somehow...");
@@ -1124,7 +1027,6 @@ public class YCPDatabase implements IDatabase {
 	DBUtil.closeQuietly(resultSet1);
 	}
 	}
->>>>>>> refs/remotes/cwolf11/master
 	
 
 	
@@ -1832,56 +1734,6 @@ public class YCPDatabase implements IDatabase {
 
 	try {
 
-<<<<<<< HEAD
-			stmt1 = conn.prepareStatement(
-					"select users.* " +
-					"	from users, projects, projectUsers " +
-					"	where projects.project_id = projectUsers.project_id " +
-					"		and users.user_id = projectUsers.user_id" +
-					"		and projects.project_id = ?"
-					);
-			stmt1.setInt(1, project_id);
-			
-			resultSet1 = stmt1.executeQuery();
-			
-			List<User> users = new ArrayList<User>();
-			
-			while (resultSet1.next()) {
-				User user = new Student();
-				loadUser(user, resultSet1);
-				users.add(user);
-			}
-			
-			if (users.size() == 0) {
-				System.out.println("This should not have happened...");
-			}
-			
-			stmt2 = conn.prepareStatement(
-					"select projects.*" +
-					"	from projects" +
-					"	where projects.project_id = ?"
-					);
-			
-			stmt2.setInt(1, project_id);
-			
-			resultSet2 = stmt2.executeQuery(); 
-			
-			List<Project> projects = new ArrayList<Project>();
-			
-			while(resultSet2.next()) {
-				Project project = new Proposal();
-				loadProject(project, resultSet2);
-				projects.add(project);
-			}
-			
-
-			
-			
-			stmt3 = conn.prepareStatement(
-					"delete from projectUsers " +
-					"	where project_id = ?"
-					);
-=======
 	stmt1 = conn.prepareStatement(
 	"select users.* " +
 	"	from users, projects, projectUsers " +
@@ -1923,7 +1775,6 @@ public class YCPDatabase implements IDatabase {
 	projects.add(project);
 	}
 	
->>>>>>> refs/remotes/cwolf11/master
 
 	
 	
@@ -1932,28 +1783,14 @@ public class YCPDatabase implements IDatabase {
 	"	where project_id = ?"
 	);
 
-<<<<<<< HEAD
-			stmt4 = conn.prepareStatement(
-					"delete from projects" + 
-					"	where project_id = ?"
-					);
-=======
 	
 	stmt3.setInt(1, projects.get(0).getProjectID());
 	stmt3.executeUpdate();
->>>>>>> refs/remotes/cwolf11/master
 
-<<<<<<< HEAD
-			stmt4.setInt(1, project_id);
-			stmt4.executeUpdate();
-		} finally {
-
-=======
 	stmt4 = conn.prepareStatement(
 	"delete from projects" + 
 	"	where project_id = ?"
 	);
->>>>>>> refs/remotes/cwolf11/master
 
 	stmt4.setInt(1, project_id);
 	stmt4.executeUpdate();
@@ -2100,21 +1937,6 @@ public class YCPDatabase implements IDatabase {
 		ResultSet resultSet = null;
 		Project project = new Proposal();
 		try {
-<<<<<<< HEAD
-			stmt = conn.prepareStatement(
-					"select projects.*" +
-					"	from projects" +
-					"	where project_id = ?"
-					);
-			stmt.setInt(1, ProjectID);
-			
-			resultSet = stmt.executeQuery();
-			if (resultSet.next()) {
-				loadProject(project, resultSet);
-			}
-
-			return project;
-=======
 		stmt = conn.prepareStatement(
 		"select projects.*" +
 		"	from projects" +
@@ -2128,7 +1950,6 @@ public class YCPDatabase implements IDatabase {
 		}
 	
 		return project;
->>>>>>> refs/remotes/cwolf11/master
 		} finally {
 		DBUtil.closeQuietly(resultSet);
 		DBUtil.closeQuietly(stmt);
@@ -3606,10 +3427,80 @@ public class YCPDatabase implements IDatabase {
 	}
 
 	@Override
-	public List<Pair<Solicitation, Proposal>> findAllProjectsByProjectID(int project_id)
+	public List<Pair<Project, Project>> findAllProjectsByProjectID(int project_id)
 			throws IOException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = connect();
+		ResultSet resultSet1 = null;
+		ResultSet resultSet2 = null;
+		ResultSet resultSet3 = null;
+		PreparedStatement stmt1 = null;
+		PreparedStatement stmt2 = null;
+		PreparedStatement stmt3 = null;
+		Project project1 = new Proposal();
+		Project project2 = new Proposal();
+		Integer project_id1 = null;
+		Integer project_id2 = null;
+		int index = 1;
+		List<Pair<Project, Project>> projectsList = new ArrayList<Pair<Project, Project>>();
+		try {
+			stmt1 = conn.prepareStatement(
+					"select * from project_projects " +
+					"	where project_id_copy3 = ? or " +
+					"	project_id_copy4 = ?"
+					);
+			
+			stmt1.setInt(1, project_id);
+			stmt1.setInt(2, project_id);
+			
+			resultSet1 = stmt1.executeQuery();
+			
+			while (resultSet1.next()) {
+				project_id1 = resultSet1.getInt(index++);
+				project_id2 = resultSet1.getInt(index++);	
+				
+				stmt2 = conn.prepareStatement(
+						"select * from projects " +
+						"	where project_id = ?"
+						);
+				stmt2.setInt(1, project_id1);
+				
+				resultSet2 = stmt2.executeQuery();
+				
+				if (resultSet2.next()) {
+					loadProject(project1, resultSet2);
+				}
+				else {
+					System.out.println("Something went wrong boys...");
+				}
+				
+				stmt3 = conn.prepareStatement(
+						"select * from projects " +
+						"	where project_id = ?"
+						);
+				stmt3.setInt(1, project_id2);
+				
+				resultSet3 = stmt3.executeQuery();
+				
+				if (resultSet3.next()) {
+					loadProject(project2, resultSet3);
+				}
+				else {
+					System.out.println("Something went wrong boys...");
+				}
+				Pair<Project, Project> projects = new Pair<Project, Project>(project1, project2);
+				projectsList.add(projects);
+			}
+			return projectsList;
+			
+		} finally {
+			DBUtil.closeQuietly(conn);
+			DBUtil.closeQuietly(resultSet1);
+			DBUtil.closeQuietly(resultSet2);
+			DBUtil.closeQuietly(resultSet3);
+			DBUtil.closeQuietly(stmt1);
+			DBUtil.closeQuietly(stmt2);
+			DBUtil.closeQuietly(stmt3);
+		}
 	}
 
 	@Override
@@ -3650,28 +3541,249 @@ public class YCPDatabase implements IDatabase {
 
 	@Override
 	public List<User> findUserByNameWildcard(String name) throws IOException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = connect();
+		ResultSet resultSet = null;
+		PreparedStatement stmt = null;
+		//Placeholder since we can't instantiate the super
+		User user = new Student();
+		List<User> users = new ArrayList<User>();
+		try {
+			stmt = conn.prepareStatement(
+				"select users.*" +
+				"	from users" +
+				"	where name like '%' || ? || '%'"
+				);
+			stmt.setString(1, name);
+			
+			resultSet = stmt.executeQuery();
+			
+			Boolean found = false;
+			
+			while (resultSet.next()){
+				found = true;
+				user = loadUser(user, resultSet);
+				users.add(user);
+			}
+			
+			if(!found){
+				System.out.println("No business with the name <" + name + "> was found in the user table");
+			}
+			return users;
+		} finally {
+		DBUtil.closeQuietly(resultSet);
+		DBUtil.closeQuietly(stmt);
+		DBUtil.closeQuietly(conn);
+		}
 	}
 
 	@Override
 	public List<User> findUserByAddressWildcard(String address) throws IOException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = connect();
+		ResultSet resultSet = null;
+		PreparedStatement stmt = null;
+		//Placeholder since we can't instantiate the super
+		User user = new Student();
+		List<User> users = new ArrayList<User>();
+		try {
+			stmt = conn.prepareStatement(
+				"select users.*" +
+				"	from users" +
+				"	where address like '%' || ? || '%'"
+				);
+			stmt.setString(1, address);
+			
+			resultSet = stmt.executeQuery();
+			
+			Boolean found = false;
+			
+			while (resultSet.next()){
+				found = true;
+				user = loadUser(user, resultSet);
+				users.add(user);
+			}
+			
+			if(!found){
+				System.out.println("No business with the name <" + address + "> was found in the user table");
+			}
+			return users;
+		} finally {
+		DBUtil.closeQuietly(resultSet);
+		DBUtil.closeQuietly(stmt);
+		DBUtil.closeQuietly(conn);
+		}
 	}
 
 	@Override
-	public void insertProjectsintoProjectProjects(int project_id_copy3, int project_id_copy4)
+	public Integer insertProjectsintoProjectProjects(int project_id_copy3, int project_id_copy4)
 			throws IOException, SQLException {
-		// TODO Auto-generated method stub
+		Connection conn = connect();
+		ResultSet resultSet1 = null;
+		ResultSet resultSet2 = null;
+		int project_id = -1;
+		PreparedStatement stmt1 = null;
+		PreparedStatement stmt2 = null;
+		PreparedStatement stmt3 = null;
+		try {
+			stmt1 = conn.prepareStatement(
+					"select * from project_projects " +
+					"	where (project_id_copy3 = ? and " +
+					"	project_id_copy4 = ?) or (project_id_copy3 = ? " +
+					"	and project_id_copy4 = ?)"
+					);
+			
+			stmt1.setInt(1, project_id_copy3);
+			stmt1.setInt(2, project_id_copy4);
+			stmt1.setInt(3, project_id_copy4);
+			stmt1.setInt(4, project_id_copy3);
+			
+			resultSet1 = stmt1.executeQuery();
+			
+			if(resultSet1.next()) {
+				System.out.println("Those projects are already paired...");
+				project_id = resultSet1.getInt(1);
+			}
+			
+			else {
+				stmt2 = conn.prepareStatement(
+						"insert into project_projects(project_id_copy3, project_id_copy4) " +
+						"	values(?, ?)"
+						);
+				stmt2.setInt(1, project_id_copy3);
+				stmt2.setInt(2, project_id_copy4);
+				
+				stmt2.executeUpdate();
+				
+				stmt3 = conn.prepareStatement(
+						"select project_id_copy3 from project_projects " +
+							"	where (project_id_copy3 = ? and " +
+							"	project_id_copy4 = ?) or (project_id_copy3 = ? " +
+							"	and project_id_copy4 = ?)"
+					);
+				
+				stmt3.setInt(1, project_id_copy3);
+				stmt3.setInt(2, project_id_copy4);
+				stmt3.setInt(3, project_id_copy4);
+				stmt3.setInt(4, project_id_copy3);
+			
+				resultSet2 = stmt3.executeQuery();
+				
+				if (resultSet2.next()) {
+					project_id = resultSet2.getInt(1);
+				}
+				else {
+					System.out.println("Something has gone horribly wrong...");
+				}
+			}
+			
+			return project_id;
+			
+		} finally {
+			DBUtil.closeQuietly(conn);
+			DBUtil.closeQuietly(resultSet1);
+			DBUtil.closeQuietly(resultSet2);
+			DBUtil.closeQuietly(stmt1);
+			DBUtil.closeQuietly(stmt2);
+			DBUtil.closeQuietly(stmt3);
+		}
+		
+		
+		
 		
 	}
 
 	@Override
 	public void deleteProjectFromProjectProjects(int project_id_copy3, int project_id_copy4)
 			throws IOException, SQLException {
-		// TODO Auto-generated method stub
+		Connection conn = connect();
+		ResultSet resultSet1 = null;
+		PreparedStatement stmt1 = null;
+		PreparedStatement stmt2 = null;
 		
+		try {
+			stmt1 = conn.prepareStatement(
+					"select * from project_projects " +
+					"	where (project_id_copy3 = ? and " +
+					"	project_id_copy4 = ?) or (project_id_copy3 = ? " +
+					"	and project_id_copy4 = ?)"
+					);
+			
+			stmt1.setInt(1, project_id_copy3);
+			stmt1.setInt(2, project_id_copy4);
+			stmt1.setInt(3, project_id_copy4);
+			stmt1.setInt(4, project_id_copy3);
+			
+			resultSet1 = stmt1.executeQuery();
+			
+			if (resultSet1.next()) {
+				stmt2 = conn.prepareStatement(
+						"delete from project_projects " +
+							"	where (project_id_copy3 = ? and " +
+							"	project_id_copy4 = ?) or (project_id_copy3 = ? " +
+							"	and project_id_copy4 = ?)"
+						);
+				stmt2.setInt(1, project_id_copy3);
+				stmt2.setInt(2, project_id_copy4);
+				stmt2.setInt(3, project_id_copy4);
+				stmt2.setInt(4, project_id_copy3);
+				
+				stmt2.executeUpdate();
+				
+			}
+			
+			
+			else {
+				System.out.println("Relation does not exist in the database...");
+			}
+		} finally {
+			DBUtil.closeQuietly(conn);
+			DBUtil.closeQuietly(stmt1);
+			DBUtil.closeQuietly(stmt2);
+			DBUtil.closeQuietly(resultSet1);
+		}
+		
+	}
+
+	@Override
+	public void editMajorType(int user_id, MajorType major) throws IOException, SQLException {
+		Connection conn = connect();
+		PreparedStatement  stmt = null;
+		try {
+			stmt = conn.prepareStatement(
+				"update users" +
+				"	set major = ?" +
+				"	where user_id = ?"
+			);
+			
+			stmt.setString(1, major.toString());
+			stmt.setInt(2, user_id);
+			
+			stmt.executeUpdate();
+		} finally {
+			DBUtil.closeQuietly(stmt);
+			DBUtil.closeQuietly(conn);
+		}
+		
+	}
+
+	@Override
+	public void editClassType(int user_id, ClassType classtype) throws IOException, SQLException {
+		Connection conn = connect();
+		PreparedStatement  stmt = null;
+		try {
+			stmt = conn.prepareStatement(
+				"update users" +
+				"	set class = ?" +
+				"	where user_id = ?"
+			);
+			
+			stmt.setString(1, classtype.toString());
+			stmt.setInt(2, user_id);
+			
+			stmt.executeUpdate();
+		} finally {
+			DBUtil.closeQuietly(stmt);
+			DBUtil.closeQuietly(conn);
+		}
 	}
 
 	

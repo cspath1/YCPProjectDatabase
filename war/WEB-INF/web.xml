@@ -42,16 +42,24 @@
   	<servlet-class>edu.ycp.cs320.cspath1.servlet.ProjectProposalServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>ViewProjectsServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.cspath1.servlet.ViewProjectsServlet</servlet-class>
+  	<servlet-name>ViewProjectServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.cspath1.servlet.ViewProjectServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>SampleProjectServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.cspath1.servlet.SampleProjectServlet</servlet-class>
+  	<servlet-name>MyProjectsServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.cspath1.servlet.MyProjectsServlet</servlet-class>
   </servlet>
    <servlet>
   	<servlet-name>UserSearchServlet</servlet-name>
   	<servlet-class>edu.ycp.cs320.cspath1.servlet.UserSearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ProposalSearchServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.cspath1.servlet.ProposalSearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SolicitationSearchServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.cspath1.servlet.SolicitationSearchServlet</servlet-class>
   </servlet>
 
 	<!-- AJAX servlets. -->
@@ -130,16 +138,24 @@
   	<url-pattern>/projectProposal</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>ViewProjectsServlet</servlet-name>
-  	<url-pattern>/viewProjects</url-pattern>
+  	<servlet-name>ViewProjectServlet</servlet-name>
+  	<url-pattern>/viewProject</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>SampleProjectServlet</servlet-name>
-  	<url-pattern>/sampleProject</url-pattern>
+  	<servlet-name>MyProjectsServlet</servlet-name>
+  	<url-pattern>/myProjects</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UserSearchServlet</servlet-name>
   	<url-pattern>/userSearch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProposalSearchServlet</servlet-name>
+  	<url-pattern>/proposalSearch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SolicitationSearchServlet</servlet-name>
+  	<url-pattern>/solicitationSearch</url-pattern>
   </servlet-mapping>
 
   <!--  AJAX servlet mappings. -->

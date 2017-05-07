@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.ycp.cs320.cspath1.controller.UserController;
 import edu.ycp.cs320.cspath1.enums.ClassType;
 import edu.ycp.cs320.cspath1.enums.MajorType;
 import edu.ycp.cs320.cspath1.enums.UserType;
+import edu.ycp.cs320.cspath1.model.AccountCreationModel;
 import edu.ycp.cs320.cspath1.persist.DatabaseProvider;
 import edu.ycp.cs320.cspath1.persist.IDatabase;
 import edu.ycp.cs320.cspath1.persist.YCPDatabase;
@@ -20,7 +22,7 @@ import edu.ycp.cs320.cspath1.user.Business;
 
 public class AccountCreationBusinessServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
-private IDatabase db;
+
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -31,8 +33,8 @@ private IDatabase db;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-			DatabaseProvider.setInstance(new YCPDatabase());
-			db = DatabaseProvider.getInstance();	
+			AccountCreationModel model = new AccountCreationModel();
+			UserController controller = new UserController();
 			String errorMessage = null;
 			
 			String email = req.getParameter("email");
@@ -46,6 +48,21 @@ private IDatabase db;
 			String name = req.getParameter("name");
 			String number = req.getParameter("number");
 			String address = req.getParameter("address");
+			
+			//populate model and controller
+			model.setEmail(email);
+			model.setUsername(username);
+			model.setClasstype(classtype);
+			model.setMajortype(majortype);
+			model.setFirstName(firstname);
+			model.setLastName(lastname);
+			model.setUsertype(UserType.BUSINESS);
+			model.setPassword(password1);
+			model.setAddress(address);
+			model.setName(name);
+			model.setContactNum(number);
+			controller.setModel(model);
+			
 			int user_id = 0;
 				
 			if (username == null || password == null || password1 == null || email == null || name == null || number == null || address == null) {
@@ -54,8 +71,9 @@ private IDatabase db;
 				errorMessage = "Passwords do not match";
 			} else {
 				try {
-					user_id = db.insertUser(username, password, email, UserType.BUSINESS, firstname, lastname, majortype, classtype, name, address, number);
+					user_id = controller.createAcct();
 				} catch (SQLException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

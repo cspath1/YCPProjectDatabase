@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ViewProjectsServlet extends HttpServlet {
+public class MyProjectsServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/viewProjects.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/myProjects.jsp").forward(req, resp);
 	}
 	
 	@Override

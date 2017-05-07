@@ -31,7 +31,7 @@ public interface IDatabase {
 	public void deleteUserAndProjects(int user_id) throws IOException, SQLException;
 	//tested
 	public void editPassword(int UserID, String password) throws IOException, SQLException;
-
+	//tested
 	public void editEmail(int UserID, String email) throws IOException, SQLException;
 	//tested
 	public void editUsername(int UserID, String email) throws IOException, SQLException;
@@ -185,10 +185,14 @@ public interface IDatabase {
 	//tested
 	public List<Pair<User, ActiveProject>> findAllActiveProjectsByUser(int UserID) throws IOException, SQLException;
 	
-	public List<Pair<Solicitation, Proposal>> findAllProjectsByProjectID(int project_id) throws IOException, SQLException;
+	public List<Pair<Project, Project>> findAllProjectsByProjectID(int project_id) throws IOException, SQLException;
 	
-	public void insertProjectsintoProjectProjects(int project_id_copy3, int project_id_copy4) throws IOException, SQLException;
+	public Integer insertProjectsintoProjectProjects(int project_id_copy3, int project_id_copy4) throws IOException, SQLException;
 	
 	public void deleteProjectFromProjectProjects(int project_id_copy3, int project_id_copy4) throws IOException, SQLException;
+	
+	public void editMajorType(int user_id, MajorType major) throws IOException, SQLException;
+	
+	public void editClassType(int user_id, ClassType classtype) throws IOException, SQLException;
 	
  }
